@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+// reusable/duplicated mathod to be used in different class
+
 public class DriverManager {
 
     public static WebDriver driver;
