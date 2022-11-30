@@ -61,6 +61,17 @@ public void inputConfirmPassword(String confirmPassword){
     confirmPasswordInputField.sendKeys(confirmPassword);
 }
 
+public void enterRegistrationDetails(String firstName, String lastName, String email, String password, String confirmPassword){
+    firstNameInputField.sendKeys(firstName);
+    lastNameInputField.sendKeys(lastName);
+    emailInputBox.clear();
+    int myRandomNumber = driverManager.generateRandomNumber();
+    emailInputBox.sendKeys(myRandomNumber+email);
+
+    passwordInputBox.sendKeys(password);
+    confirmPasswordInputField.sendKeys(confirmPassword);
+}
+
 public void clickOnRegisterButtonOnRegisterPage(){
     registerButtonOnRegisterPage.click();
 }

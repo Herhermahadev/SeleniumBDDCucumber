@@ -1,11 +1,16 @@
 package org.example.step_defi;
 
+import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.example.driver.DriverManager;
 import org.example.pages.RegisterPage;
 import org.hamcrest.Matchers;
+
+import java.util.List;
+import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -66,8 +71,26 @@ public class RegisterSteps extends DriverManager {
             String actualUrl = getUrl();
             System.out.println(actualUrl);
             assertThat(actualUrl, containsString(expectedUrlText));
+    }
+
+    @When("^I enter following data for registration$")
+    public void i_enter_following_data_for_registration(DataTable dataTable) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        // For automatic transformation, change DataTable to one of
+        // List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.
+        // E,K,V must be a scalar (String, Integer, Date, enum etc)
+       List<Map<String,String>> data = dataTable.asMaps(String.class, String.class);
+        System.out.println(data);
+        System.out.println((dataTable));
+        registerPage.enterRegistrationDetails(
+                data.get(0).get("firstname"),
+                data.get(0).get("lastname"),
+                data.get(0).get("email"),
+                data.get(0).get("password"),
+                data.get(0).get("confirm password"));
 
     }
+
 
 }
 

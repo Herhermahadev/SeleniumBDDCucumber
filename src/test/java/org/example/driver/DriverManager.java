@@ -5,6 +5,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -51,7 +52,31 @@ public class DriverManager {
                 throw new IllegalAccessException("Unexpected browser");
         }
     }
+    public void runInHeadlessMode() throws IllegalAccessException {
+        switch (browser) {
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions chromeOptions=new ChromeOptions();
+                chromeOptions.setHeadless(true);
+                chromeOptions.addArguments("--window-size=1920,1080");
+                driver = new ChromeDriver(chromeOptions);
+                break;
+            case "edge":
+                WebDriverManager.edgedriver().setup();
+                driver = new EdgeDriver();
+                break;
+            case "safari":
+                driver = new SafariDriver();
+                break;
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+                break;
+            default:
+                throw new IllegalAccessException("Unexpected browser");
+        }
 
+    }
     public void maxBrowser() {
         driver.manage().window().maximize();
     }
@@ -112,7 +137,8 @@ public class DriverManager {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
-    public void takeElementscreenshot(WebElement element, String fileName)  {
+    //take element screenshot is from selenium 4.0
+    public void takeElementScreenshot(WebElement element, String fileName)  {
         File scnFile =element.getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(scnFile, new File("./target/screenshots/" +fileName+ ".png"));
@@ -120,22 +146,21 @@ public class DriverManager {
             e.printStackTrace();
         }
     }
-
     public void takeScreenshot(Scenario scenario){
 
         byte[] screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         scenario.embed(screenShot, "image/png");
-//take a screen shot
+    //take a screenshot when scenario is failed
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
         try {
-            FileUtils.copyFile(scrFile, new File("/Users/khuntn01/Desktop/screanshotTests/Error.jpg"));
+            FileUtils.copyFile(scrFile, new File("/Users/apple/Desktop/screenshotTests/Error.jpg"));
         } catch (IOException e) {
-// TODO Auto-generated catch block
+    // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
-
-
+//Users/apple/Desktop/screenshotTests
+    //Users/apple/Desktop/screenshotTests
 }
 

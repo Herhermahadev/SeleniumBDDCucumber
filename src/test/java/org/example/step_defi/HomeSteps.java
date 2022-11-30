@@ -15,6 +15,8 @@ public class HomeSteps extends DriverManager {
 
     DriverManager driverManager= new DriverManager();
     HomePage homePage = new HomePage();
+
+
     @Given("^I am on home page$")
     public void i_am_on_home_page() throws Throwable {
         String actualUrl = getUrl();
@@ -35,6 +37,11 @@ public class HomeSteps extends DriverManager {
     @When("^I click on login button$")
     public void i_click_on_login_button() throws Throwable {
         homePage.clickOnLoginButtononHomePage();
+    }
+
+    @When("^I click on Contact us button on home page$")
+    public void i_click_on_Contact_us_button_on_home_page() throws Throwable {
+       homePage.clickOnContactUsBtnonHomePage();
     }
 
 }
