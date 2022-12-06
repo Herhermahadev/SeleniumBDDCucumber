@@ -1,4 +1,4 @@
-@regression @contactUs
+@contactUs @regression
 Feature: Contact us feature
 
   As a customer

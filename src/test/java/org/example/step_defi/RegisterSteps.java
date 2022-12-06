@@ -19,7 +19,7 @@ import static org.hamcrest.Matchers.equalToIgnoringCase;
 
 public class RegisterSteps extends DriverManager {
 
-    RegisterPage registerPage=new RegisterPage();
+    RegisterPage  registerPage=new RegisterPage();
     //DriverManager driverManager = new DriverManager();
     @Then("^I click on register button$")
     public void i_click_on_register_button() throws Throwable {
@@ -73,6 +73,8 @@ public class RegisterSteps extends DriverManager {
             assertThat(actualUrl, containsString(expectedUrlText));
     }
 
+
+    //This method is for Data Table
     @When("^I enter following data for registration$")
     public void i_enter_following_data_for_registration(DataTable dataTable) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
@@ -88,9 +90,6 @@ public class RegisterSteps extends DriverManager {
                 data.get(0).get("email"),
                 data.get(0).get("password"),
                 data.get(0).get("confirm password"));
-
     }
-
-
 }
 
