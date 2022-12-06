@@ -6,7 +6,6 @@ import cucumber.api.java.Before;
 import org.example.driver.DriverManager;
 
 public class Hooks {
-
     DriverManager driverManager = new DriverManager();
 
     @Before
@@ -21,9 +20,9 @@ public class Hooks {
     @After
     public void teardown(Scenario scenario) {
 
-       if (scenario.isFailed()) {
-           driverManager.takeScreenshot(scenario);
-       }
-            driverManager.closeBrowser();
+        if (scenario.isFailed()) {
+            driverManager.takeScreenshot(scenario);
+        }
+        driverManager.closeBrowser();
     }
 }

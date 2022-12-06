@@ -17,6 +17,9 @@ public class HomePage extends DriverManager {
     @FindBy(xpath = "//a[contains(text(),'Contact us')]")
     WebElement contactUsBtn;
 
+    @FindBy(id = "small-searchterms")
+    WebElement searchField;
+
     //create method of action
 public String getTextFromHomePage(){
   return  textOnHomePage.getText();
@@ -31,6 +34,10 @@ public void clickOnContactUsBtnonHomePage(){
     scrollTo(contactUsBtn); //from extend by inheritance
     //driverManager.scrollTo(contactUsBtn); //from object creation
     contactUsBtn.click();
+}
+
+public void takeSearchFieldScreenshot(){
+    takeElementScreenshot(searchField, "searchFieldScreenshot");
 }
 
 }

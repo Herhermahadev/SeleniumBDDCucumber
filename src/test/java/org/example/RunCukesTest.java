@@ -6,14 +6,14 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources",
-dryRun = false,
-strict = true,
-monochrome = true,
-tags = "@contactUs",
-plugin = "json:target/cucumber-report/cucumber.json")
+        dryRun = false,
+        strict = true,
+        monochrome = true,
+        tags = "@regression",
+        plugin = "json:target/cucumber-report/cucumber.json")
 public class RunCukesTest {
-    
-     // a json report is generated as target/cucumber-report
+
+    // a json report is generated as target/cucumber-report
     //open maven tab and click 'execute maven goal'
     //enter 'cluecumber-report:reporting' and enter  to build
     //report will generated in target folder as generated-report

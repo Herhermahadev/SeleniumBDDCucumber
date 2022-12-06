@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class RegisterPage extends DriverManager {
-DriverManager driverManager = new DriverManager();
+//DriverManager driverManager = new DriverManager();
 
 @FindBy(css = "a[class='ico-register']")
 WebElement registerButtonOnHomePage;
@@ -49,7 +49,7 @@ public void enterLastName(String lastName){
 }
 public void inputEmail(String email){
     emailInputBox.clear();
-    int myRandomNumber = driverManager.generateRandomNumber();
+    int myRandomNumber = generateRandomNumber();
     emailInputBox.sendKeys(myRandomNumber+email);
 }
 
@@ -61,14 +61,20 @@ public void inputConfirmPassword(String confirmPassword){
     confirmPasswordInputField.sendKeys(confirmPassword);
 }
 
+// below method is used for DataTable
 public void enterRegistrationDetails(String firstName, String lastName, String email, String password, String confirmPassword){
+    firstNameInputField.clear();
     firstNameInputField.sendKeys(firstName);
+    lastNameInputField.clear();
     lastNameInputField.sendKeys(lastName);
+
     emailInputBox.clear();
-    int myRandomNumber = driverManager.generateRandomNumber();
+    int myRandomNumber = generateRandomNumber();
     emailInputBox.sendKeys(myRandomNumber+email);
 
+    passwordInputBox.clear();
     passwordInputBox.sendKeys(password);
+    confirmPasswordInputField.clear();
     confirmPasswordInputField.sendKeys(confirmPassword);
 }
 
